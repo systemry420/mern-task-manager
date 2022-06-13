@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <h1>Task Manager</h1>
       <Form addTask={add} />
-      {tasks.length > 0 && <List list={tasks} handleEdit={edit} handleDelete={deleteItem} />}
+      {tasks.length > 0 && <List list={tasks} handleDelete={deleteItem} />}
     </div>
   );
 }

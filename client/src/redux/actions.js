@@ -37,7 +37,6 @@ export const getTasks = () => async (dispatch) => {
 export const deleteTask = (id) => async (dispatch) => {
     try {
         const res = await axios.delete(URL + id)
-        const task = await res.data
 
         dispatch({
             type: 'DELETE_TASK',

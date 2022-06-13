@@ -1,5 +1,6 @@
 export const initState = {
-    tasks: []
+    tasks: [],
+    currentTask: null
 }
 
 export const reducer = (state = initState, action) => {
