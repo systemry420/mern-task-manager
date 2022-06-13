@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:8000/api/tasks';
+const URL = 'http://localhost:8000/api/tasks/';
 
 export const addTask = (data) => 
     async (dispatch) => {
@@ -10,7 +10,6 @@ export const addTask = (data) =>
         // })
         const res = await axios.post(URL, data)
         const task = await res.data
-        console.log(task);
 
         dispatch({ 
             type: 'ADD_TASK',
@@ -29,6 +28,20 @@ export const getTasks = () => async (dispatch) => {
         dispatch({
             type: "GET_TASKS",
             payload: tasks
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteTask = (id) => async (dispatch) => {
+    try {
+        const res = await axios.delete(URL + id)
+        const task = await res.data
+
+        dispatch({
+            type: 'DELETE_TASK',
+            payload: id
         })
     } catch (error) {
         console.log(error);

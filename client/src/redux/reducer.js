@@ -12,7 +12,17 @@ export const reducer = (state = initState, action) => {
     
         case 'GET_TASKS':
             return {
+                ...state,
                 tasks: [...state.tasks, ...action.payload]
+            }
+
+        case 'DELETE_TASK':
+            const tasks = state.tasks.filter(t => t._id !== action.payload)
+            console.log(tasks);
+
+            return {
+                ...state,
+                tasks
             }
 
         case 'RESET':
