@@ -5,6 +5,9 @@ const URL = 'http://localhost:8000/api/tasks';
 export const addTask = (data) => 
     async (dispatch) => {
     try {
+        // dispatch({
+        //     type: 'RESET'
+        // })
         const res = await axios.post(URL, data)
         const task = await res.data
         console.log(task);
@@ -24,7 +27,7 @@ export const getTasks = () => async (dispatch) => {
         const tasks = await res.data
 
         dispatch({
-            type: "ADD_TASK",
+            type: "GET_TASKS",
             payload: tasks
         })
     } catch (error) {

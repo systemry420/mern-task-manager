@@ -19,7 +19,7 @@ code {
   align-items: center;
   flex-direction: column;
   width: 95%;
-  height: 100vh;
+  height: auto;
   background-color: #f5f5f5;
 }
 

@@ -1,23 +1,26 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import Form from './components/Form';
 import List from './components/List';
-import { addTask } from './redux/actions';
+import { addTask, getTasks } from './redux/actions';
 
 function App() {
-
   const dispatch = useDispatch()
+  const {tasks} = useSelector(state => state.taskReducer)
 
   const add = (data) => {
-    console.log(data);
     dispatch(addTask(data))
   }
+
+  useEffect(() => {
+    dispatch(getTasks())
+  }, [])
 
   return (
     <div className="App">
       <h1>Task Manager</h1>
       <Form addTask={add} />
-      <List />
+      {tasks.length > 0 && <List list={tasks} />}
     </div>
   );
 }

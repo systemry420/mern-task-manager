@@ -11,7 +11,15 @@ export const reducer = (state = initState, action) => {
             }
     
         case 'GET_TASKS':
-            return state.tasks
+            return {
+                tasks: [...state.tasks, ...action.payload]
+            }
+
+        case 'RESET':
+            return {
+                ...state, 
+                tasks: []
+            }
         default:
             return state
     }
