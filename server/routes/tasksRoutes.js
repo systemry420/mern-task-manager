@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/', getAllTasks)
 router.post('/', addNewTask)
 router.get('/:id', getTask)
-router.put('/:id', editTask)
+router.patch('/:id', editTask)
 router.delete('/:id', deleteTask)
 
 module.exports = router

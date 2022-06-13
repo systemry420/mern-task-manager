@@ -1,6 +1,5 @@
 export const initState = {
-    tasks: [],
-    currentTask: null
+    tasks: []
 }
 
 export const reducer = (state = initState, action) => {
@@ -13,17 +12,23 @@ export const reducer = (state = initState, action) => {
     
         case 'GET_TASKS':
             return {
-                ...state,
-                tasks: [...state.tasks, ...action.payload]
+                ...state
             }
 
         case 'DELETE_TASK':
             const tasks = state.tasks.filter(t => t._id !== action.payload)
-            console.log(tasks);
 
             return {
                 ...state,
                 tasks
+            }
+        
+        case 'EDIT_TASK':
+            const list = state.tasks.filter(t => t._id !== action.payload)
+
+            return {
+                ...state,
+                tasks: [...list, action.payload]
             }
 
         case 'RESET':

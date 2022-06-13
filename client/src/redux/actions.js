@@ -46,3 +46,17 @@ export const deleteTask = (id) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const editTask = (data) => async (dispatch) => {
+    try {
+        const res = await axios.patch(URL + data._id, data)
+        const task = await res.data
+
+        dispatch({
+            type: 'EDIT_TASK',
+            payload: task
+        })
+    } catch(error) {
+
+    }
+}

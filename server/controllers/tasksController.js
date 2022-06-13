@@ -30,8 +30,10 @@ const getTask = asyncWrapper(async (req, res) => {
 const editTask = asyncWrapper(async (req, res) => {
     const { id: taskId } = req.params
     const task = await Task.findOneAndUpdate({ _id: taskId }, req.body, {
-        new: true, runValidators: true
+        nrunValidators: true
     })
+
+    console.log(task);
 
     if(!task) {
         return res.status(404).json({ message: `Task not found`})
