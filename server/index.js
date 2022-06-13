@@ -3,6 +3,7 @@ const connectDB = require('./db')
 const router = require('./routes/tasksRoutes')
 require('dotenv').config()
 const { json, urlencoded } = require('body-parser')
+var cors = require('cors');
 
 const app = express()
 
@@ -11,6 +12,7 @@ const port = 8000
 // middleware 
 app.use(json())
 app.use(urlencoded({ extended: false }))
+app.use(cors());
 
 
 // GET  /api/tasks   - get all tasks
